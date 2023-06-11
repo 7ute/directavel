@@ -1,0 +1,68 @@
+{
+    "name": "7ute/directavel",
+    "description": "Use Directus as a back-office for Laravel",
+    "homepage": "https://github.com/7ute/directavel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Julien Cauvin",
+            "email": "contact@7ute.fr",
+            "role": "Developer"
+        }
+    ],
+    "keywords": [
+        "Cauvin Julien",
+        "7ute",
+        "Directus",
+        "Laravel",
+        "Laratus",
+        "Directavel"
+    ],
+    "support": {
+        "issues": "https://github.com/7ute/directavel/issues",
+        "source": "https://github.com/7ute/directavel/tree/v1.0.0"
+    },
+    "require": {
+        "php": ">=8.0",
+        "laravel/framework": "^10.0"
+    },
+    "require-dev": {
+        "graham-campbell/testbench": "^6.0",
+        "phpunit/phpunit": "^10.2",
+        "orchestra/testbench": "^8.5",
+        "pestphp/pest": "^2.6",
+        "pestphp/pest-plugin-laravel": "^2.0",
+        "guzzlehttp/guzzle": "^7.7",
+        "mockery/mockery": "^1.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "SevenUte\\Directavel\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SevenUte\\Directavel\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SevenUte\\Directavel\\DirectavelServiceProvider"
+            ],
+            "aliases": {
+                "Directavel": "SevenUte\\Directavel\\Directavel"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
