@@ -41,6 +41,9 @@ it('should clear Directus internal cache', function () {
 });
 
 it('should fail at clearing Directus internal cache', function () {
+    Http::fake([
+        '*' => Http::response('Fail', 400),
+    ]);
     Log::shouldReceive('error')
         ->once()
         ->withArgs(function ($message) {

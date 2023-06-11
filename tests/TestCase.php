@@ -4,6 +4,7 @@ namespace SevenUte\Directavel\Tests;
 
 use Exception;
 use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
+use Illuminate\Support\Facades\Http;
 use Orchestra\Testbench\TestCase as Orchestra;
 use SevenUte\Directavel\DirectavelServiceProvider;
 
@@ -20,6 +21,7 @@ class TestCase extends Orchestra
     {
         TestUtils::copyDirectusFromInitial();
         parent::setUp();
+        Http::preventStrayRequests();
         $this->beforeApplicationDestroyed(function () {
             TestUtils::cleanDummies();
         });
