@@ -16,7 +16,7 @@ Directavel requires [PHP](https://php.net) 8.0+, [Laravel](https://laravel.com/)
 To get the latest version, simply require the project using [Composer](https://getcomposer.org):
 
 ```bash
-composer require SevenUte/Directavel
+composer require 7ute/directavel
 ```
 
 Directus must be installed and bootstraped, and the migrations must have been run already.
