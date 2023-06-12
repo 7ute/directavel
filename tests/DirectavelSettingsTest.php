@@ -3,12 +3,12 @@
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use SevenUte\Directavel\Directavel;
+use SevenUte\Directavel\DirectavelManager;
 use SevenUte\Directavel\Exceptions\DirectavelStorageMissingException;
 use SevenUte\Directavel\Facades\Directavel as DirectavelFacade;
 
 it('should preload the palette', function () {
-    $instance = new Directavel();
+    $instance = new DirectavelManager();
     expect($instance->tailwind_palette)->toBeNull();
     $instance->updateThemeCss();
     expect($instance->tailwind_palette->name)->toEqual('default');

@@ -3,7 +3,7 @@
 namespace SevenUte\Directavel\Commands;
 
 use Illuminate\Console\Command;
-use SevenUte\Directavel\Directavel;
+use SevenUte\Directavel\Facades\Directavel;
 
 /**
  * @codeCoverageIgnore

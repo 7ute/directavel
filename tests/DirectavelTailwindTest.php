@@ -1,10 +1,10 @@
 <?php
 
-use SevenUte\Directavel\Directavel;
+use SevenUte\Directavel\DirectavelManager;
 use SevenUte\Directavel\Facades\Directavel as DirectavelFacade;
 
 test('config tailwind palette works', function () {
-    $instance = new Directavel();
+    $instance = new DirectavelManager();
 
     config()->set('directavel.tailwind_palette_file', null);
     
@@ -18,7 +18,7 @@ test('config tailwind palette works', function () {
 });
 
 test('config tailwind from file works', function () {
-    $instance = new Directavel();
+    $instance = new DirectavelManager();
     
     config()->set('directavel.tailwind_palette_file', 'tailwind.palettes.js');
     config()->set('directavel.tailwind_config_file', 'tailwind.config.js');

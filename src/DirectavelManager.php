@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 use SevenUte\Directavel\Exceptions\DirectavelMissingAdminUser;
 use SevenUte\Directavel\Exceptions\DirectavelStorageMissingException;
 
-class Directavel
+class DirectavelManager
 {
     const CSS_SPACING = '    ';
 

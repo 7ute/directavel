@@ -1,11 +1,11 @@
 <?php
 
-use SevenUte\Directavel\Directavel;
+use SevenUte\Directavel\DirectavelManager;
 use SevenUte\Directavel\Exceptions\DirectavelStorageMissingException;
 use SevenUte\Directavel\Facades\Directavel as DirectavelFacade;
 
 it('should preload the palette', function () {
-    $instance = new Directavel();
+    $instance = new DirectavelManager();
     expect($instance->tailwind_palette)->toBeNull();
     $instance->updateProjectLogo();
     expect($instance->tailwind_palette->name)->toEqual('default');
@@ -17,7 +17,7 @@ it('should fail with an invalid logo path', function () {
     config()->set('directavel.filesystem', 'non-existant-disk');
 
     expect(function () {
-        new Directavel();
+        new DirectavelManager();
     })->toThrow(DirectavelStorageMissingException::class);
 });
 
@@ -26,7 +26,7 @@ it('should fallback to a random UUID without logo ID', function () {
     $logo = '<svg version="1.1" width="1024" height="1024" xmlns="http://www.w3.org/2000/svg"></svg>';
 
     File::put(base_path($logo_path), $logo);
-    $instance = new Directavel();
+    $instance = new DirectavelManager();
 
     expect($instance->logo_id)->not->toBeIn(['11111111-2222-3333-4444-555555555555']);
 });
@@ -37,7 +37,7 @@ it('should be set to logo ID if in config', function () {
     $logo = '<svg version="1.1" width="1024" height="1024" xmlns="http://www.w3.org/2000/svg"></svg>';
 
     File::put(base_path($logo_path), $logo);
-    $instance = new Directavel();
+    $instance = new DirectavelManager();
 
     expect($instance->logo_id)->toEqual('11111111-2222-3333-4444-555555555555');
 });
@@ -48,7 +48,7 @@ it('should work without a logo file', function () {
 
     File::delete(base_path(config('directavel.logo_path')));
 
-    $instance = new Directavel();
+    $instance = new DirectavelManager();
     expect($instance->logo_id)->toBeNull();
 
     $instance->updateProjectLogo();

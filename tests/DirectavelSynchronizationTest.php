@@ -1,6 +1,6 @@
 <?php
 
-use SevenUte\Directavel\Directavel;
+use SevenUte\Directavel\DirectavelManager;
 use SevenUte\Directavel\Facades\Directavel as DirectavelFacade;
 
 test('table should not be wiped unless set as such in config', function () {
@@ -15,7 +15,7 @@ test('table should not be wiped unless set as such in config', function () {
         ]);
     expect(config('directavel.wipe.activity'))->toBeFalse();
     
-    $instance = new Directavel();
+    $instance = new DirectavelManager();
     $instance->synchronizeDatabase();
 
     $nb_rows = DB::table('directus_activity')->count();
@@ -23,7 +23,7 @@ test('table should not be wiped unless set as such in config', function () {
 
     config()->set('directavel.wipe.activity', true);
 
-    $wiped_instance = new Directavel();
+    $wiped_instance = new DirectavelManager();
     $wiped_instance->synchronizeDatabase();
 
     $nb_rows = DB::table('directus_activity')->count();
@@ -38,7 +38,7 @@ test('collections should sync', function () {
     $nb_relations = DB::table('directus_fields')->count();
     expect([$nb_collections, $nb_fields, $nb_relations])->each->toEqual(0);
 
-    $instance = new Directavel();
+    $instance = new DirectavelManager();
     $instance->synchronizeDatabase();
 
     $collections = DB::table('directus_collections')->get();

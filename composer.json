@@ -54,7 +54,7 @@
                 "SevenUte\\Directavel\\DirectavelServiceProvider"
             ],
             "aliases": {
-                "Directavel": "SevenUte\\Directavel\\Directavel"
+                "Directavel": "SevenUte\\Directavel\\Facades\\Directavel"
             }
         }
     },

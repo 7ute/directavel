@@ -1,7 +1,7 @@
 # Directavel
 
 Directavel helps using [Directus](https://directus.io/) as an administrative backend for [Laravel](http://laravel.com).
-It provides some commands to programmatically define and version Directus collections.
+It provides some commands to programmatically define and version Directus collections, and sync them without touching your data tables.
 
 <p align="center">
 <img href="https://github.com/7ute/Directavel/workflows/tests/badge.svg"><img src="https://github.com/7ute/Directavel/workflows/tests/badge.svg" alt="Tests"></img></a>
@@ -18,6 +18,14 @@ To get the latest version, simply require the project using [Composer](https://g
 ```bash
 composer require 7ute/directavel
 ```
+
+Once installed, if you are not using automatic package discovery, then you need to register the `SevenUte\Directavel\DirectavelServiceProvider` service provider in your `config/app.php`.
+You can also alias the facade:
+
+```php
+        'Directavel' => SevenUte\Directavel\Facades\Directavel::class,
+```
+
 
 Directus must be installed and bootstraped, and the migrations must have been run already.
 You can bootstrap it by running the following **in the directus project directory** :
@@ -77,7 +85,7 @@ The general presets can be defined in a file at the path set in the `directavel.
 Some default config for the `directus_activity`, `directus_presets` and `directus_users` views are included in the [presets.php](https://github.com/7ute/Directavel/blob/master/database/directus/presets.php) file of this project.
 
 ## Usage
-Once the collections are configured, you can use the `Directavel` facade in a migration, or use the command to trigger a full refresh of Directus collections / fields without touching your non-directus data tables.
+Once the collections are configured, you can use the facade in a migration, or use the command to trigger a full refresh of Directus collections / fields without touching your non-directus data tables.
 
 > **Warning**
 > All your existing Activityn Collections, Fields, Presets, Relations and Revisions might be wiped, depending on your settings in the config file.
@@ -90,7 +98,7 @@ Once the collections are configured, you can use the `Directavel` facade in a mi
 ### Facade
 
 ```php
-use SevenUte\Directavel\Directavel;
+use SevenUte\Directavel\Facades\Directavel;
 
 Directavel::updateProjectAdmin()
     ->updateProjectPresets()
@@ -106,6 +114,12 @@ Directavel::updateProjectAdmin()
 - `clearCache`: Clears Directus collection cache to prevent "inexistant field" errors ;
 - `loadTailwindThemeColors`: Reloads the Tailwind theme colors ;
 - `loadCurrentAdminId`: Reloads the Directus admin user ID.
+
+## Tests
+This package is tested with [Pest](https://pestphp.com/). To run the tests, use `composer tests`.
+
+## Contributions
+Pull requests are welcome. Pull requests with tests are even more welcome.
 
 ## Security
 If you discover a security vulnerability within this package, please send an e-mail to Julien Cauvin at contact@7ute.fr.
