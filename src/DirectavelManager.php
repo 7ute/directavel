@@ -60,6 +60,7 @@ class DirectavelManager
         if (!$this->admin_id) {
             throw new DirectavelMissingAdminUser();
         }
+        return $this;
     }
 
     public function updateProjectAdmin()
